@@ -45,6 +45,6 @@ Zhiming Zhang, Zhenyu Lei, Masaaki Omura, Hideyuki Hasegawa, and Shangce Gao,  â
   year={2024},
   volume={11},
   number={2},
-  pages={1-3},
+  pages={541-543},
   doi={10.1109/JAS.2023.123978}}
 }

@@ -44,7 +44,7 @@ class CifarLoader:
                 aug += [aug_policy]
             
             aug += [transforms.ToTensor(), 
-                    transforms.Normalize(self.norm[0], self.norm[1]]]
+                    transforms.Normalize(self.norm[0], self.norm[1])]
             
             if 'random_erasing' in aug_config:
                 re_config = aug_config['random_erasing']

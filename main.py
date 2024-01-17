@@ -4,7 +4,7 @@ import argparse
 import time
 
 from network.network import *
-from utils.dataloader import CifarLoader, ImagenetLoader
+from utils.dataloader import CifarLoader
 from utils.logger import LoggerWriter
 
 from train import Train
@@ -43,8 +43,6 @@ if __name__ == '__main__':
         
     if 'cifar_type' in config['data_params']:
         data_loader = CifarLoader(config['data_params'])
-    elif 'imagenet_type' in config['data_params']:
-        data_loader = ImagenetLoader(config['data_params'])
 
     if mode == 'train':
         logger = LoggerWriter(config, checkpoint)

@@ -1,6 +1,6 @@
 {
     "data_params": {
-        "data_root": "/mnt/data1/DataSet/Image/Classification/CIFAR",
+        "data_root": "/home/zhangzm/DataSet/CIFAR",
         "cifar_type": "CIFAR10",
         "batch_size": 128,
         "img_size": [
@@ -36,8 +36,8 @@
         },
         "dnm": {
             "in_channel": 192,
-            "out_channel": 100,
-            "num_branch": 32,
+            "out_channel": 10,
+            "num_branch": 8,
             "synapse_activation": "Softmax",
             "dendritic_activation": "None",
             "soma": "None"

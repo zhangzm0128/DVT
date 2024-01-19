@@ -3,10 +3,12 @@ from torch import nn, einsum
 from torch.nn import functional as F
 from network.SPT import ShiftedPatchTokenization
 from network.net_utils import DropPath
-
+from network.vision_transformer import ViT as vision_trans
 
 import einops as ein
 import einops.layers.torch as ein_layer
+
+import numpy as np
 
 # helpers
 
@@ -317,4 +319,92 @@ class DVT(nn.Module):
         
     def forward(self, x):
         return self.net(x)
+        
+class OriViT(nn.Module):
+    def __init__(self, config, device='cpu'):
+        super(OriViT, self).__init__()
+        
+        vit_config = config['ViT']
+        
+        
+        if config['mlp_head'] == 'original':
+            self.mlp_head = 'original'
+        elif config['mlp_head'] == 'strategy_1':
+            self.mlp_head = 'strategy_1'
+        elif config['mlp_head'] == 'strategy_2':
+            self.mlp_head = 'strategy_2'
+        elif config['mlp_head'] == 'strategy_3':
+            self.mlp_head = 'strategy_3'
+
+            
+        self.net = vision_trans(**vit_config, mlp_head=self.mlp_head).to(device)
+    
+    def str2func(self, config):
+        # sigmoid, relu, gelu, softmax
+        
+        for k, func_str in config.items():
+            if not isinstance(func_str, str):
+                continue
+            if func_str.casefold() == 'sigmoid'.casefold():
+                func_str = nn.Sigmoid()
+            elif func_str.casefold() == 'relu'.casefold():
+                func_str = nn.ReLU()
+            elif func_str.casefold() == 'gelu'.casefold():
+                func_str = nn.GELU()
+            elif func_str.casefold() == 'softmax'.casefold():
+                func_str = nn.Softmax(dim=1)
+            elif func_str.casefold() == 'none'.casefold():
+                func_str = None
+            config[k] = func_str
+        return config
+        
+    def forward(self, x):
+        return self.net(x)
+        
+        
+
+        
+
+'''     
+config = {
+    "ViT": {
+        "img_size": 32,
+        "patch_size": 4,
+        "num_classes": 10,
+        "dim": 192,
+        "depth": 9,
+        "heads": 12,
+        "mlp_dim_ratio": 2,
+        "dim_head": 16
+    },
+    "dnm": {
+        "in_channel": 192, 
+        "out_channel": 10, 
+        "num_branch": 10, 
+        "synapse_activation": "Softmax", 
+        "dendritic_activation": "None",
+        "soma": "None"
+    },
+    "mlp_head": "dnm"
+}
+
+net = TransDNM(config, 'cuda:0')
+
+img = torch.randn(10, 3, 32, 32).to('cuda:0')
+print(net(img).shape)
+'''   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         

@@ -60,6 +60,11 @@ class Train:
         else:
             self.opt = eval('optim.' + self.opt)(self.net.parameters(), self.lr, **self.config['train_params']['opt_args'])
             
+            # self.opt = eval('optim.' + self.opt)(
+            #     [{'params': self.net.net.transformer.parameters(), "lr": self.lr},
+            #      {'params': self.net.net.mlp_head.parameters(), "lr": self.lr-1e-3}
+            #      ], **self.config['train_params']['opt_args'])
+            
     def set_scheduler(self):
         if 'lr_scheduler' in self.config['train_params'] and self.config['train_params']['lr_scheduler'] != {}:
             n_iter_per_epoch = len(self.train_data_loader)
@@ -101,6 +106,7 @@ class Train:
             self.net.train()
             true_report, pred_report = None, None
             for idx, (data, labels) in enumerate(self.train_data_loader):
+                # print(data.shape,labels.shape)
                 # datas [b, n, h, w], labels (int label) [b]
                 x_batch = Variable(torch.FloatTensor(data).to(self.device), requires_grad=False)
                 y_batch = Variable(labels.to(self.device), requires_grad=False)

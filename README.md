@@ -3,7 +3,7 @@
 
 > DVT: Dendritic Learning-incorporated Vision Transformer for Image Recognition
 
-> [Zhiming Zhang](https://scholar.google.com/citations?user=j5YBr3IAAAAJ&hl=zh-CN&oi=sra), [Zhenyu Lei](https://scholar.google.com/citations?user=7Ss6peAAAAAJ&hl=zh-CN&oi=sra), [Masaaki Omura](), [Hideyuki Hasegawa](https://scholar.google.com/citations?hl=zh-CN&user=Qb2bhzcAAAAJ&view_op=list_works&sortby=pubdate), [Shangce Gao](https://toyamaailab.github.io/)
+> [Zhiming Zhang](https://zhangzm0128.github.io/), [Zhenyu Lei](https://scholar.google.com/citations?user=7Ss6peAAAAAJ&hl=zh-CN&oi=sra), Masaaki Omura, [Hideyuki Hasegawa](https://scholar.google.com/citations?hl=zh-CN&user=Qb2bhzcAAAAJ&view_op=list_works&sortby=pubdate), [Shangce Gao](https://toyamaailab.github.io/)
 
 
 DVT is a groundbreaking Biomimetic Vision Transformer that combines dendritic learning and Vision Transformer architecture, showcasing superior image recognition performance through biologically inspired structures.

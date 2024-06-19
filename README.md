@@ -34,7 +34,7 @@ Our code is based on [PyTorch](https://github.com/pytorch/pytorch).
 
 ## Citing DVT
 
-Zhiming Zhang, Zhenyu Lei, Masaaki Omura, Hideyuki Hasegawa, and Shangce Gao,  “Dendritic learning-incorporated vision transformer for image recognition,” IEEE/CAA Journal of Automatica Sinica, vol. 11, no. 2, pp. 1–3, Feb. 2024. DOI: 10.1109/JAS.2023.123978. 
+Zhiming Zhang, Zhenyu Lei, Masaaki Omura, Hideyuki Hasegawa, and Shangce Gao,  “Dendritic learning-incorporated vision transformer for image recognition,” IEEE/CAA Journal of Automatica Sinica, vol. 11, no. 2, pp. 541-543, Feb. 2024. DOI: 10.1109/JAS.2023.123978. 
 
 
 ```bib
